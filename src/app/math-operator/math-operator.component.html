@@ -1,0 +1,16 @@
+<h3>Math Operations</h3>
+
+<p>
+  <strong>Addition: </strong>
+  <input type="text" [(ngModel)]="addends1" /> + <input type="text" [(ngModel)]="addends2" /> = {{sum}}
+
+  <button (click)="onAddButtonClick();">Compute</button>
+</p>
+
+
+<p>
+  <strong>Multiplication: </strong>
+  <input type="text" [(ngModel)]="multiplicand" /> * <input type="text" [(ngModel)]="multiplier" /> = {{product}}
+
+  <button (click)="onMultiplyButtonClick();">Compute</button>
+</p>

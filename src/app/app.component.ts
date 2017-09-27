@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+
+import { MovieListComponent } from './movies/movie-list/movie-list.component';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+
+  @ViewChild(MovieListComponent) myMovieList: MovieListComponent;
+
+  loadMyMovies() {
+    this.myMovieList.loadMovies();
+  }
+
 }

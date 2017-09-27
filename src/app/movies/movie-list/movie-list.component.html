@@ -1,0 +1,56 @@
+<h3>
+  Movie List
+</h3>
+
+<div class="form-group">
+  <label for="sort">Sort By</label>
+  <select class="form-control" id="sort" [(ngModel)]="sort">
+    <option selected="selected" value="asc">Ascending</option>
+    <option value="desc">Descending</option>
+  </select>
+</div>
+
+<input class="form-control input-search" type="text" placeholder="Search" 
+[(ngModel)]="keyword" name="search" />
+
+<ul>
+  <li *ngFor="let movie of movieList | 
+  movieFilter: 'Title': keyword |
+  orderBy:'Title':sort" 
+  
+  style="display: inline-block; margin-right: 50px;">
+    <h3>{{movie.Title | titlecase}}</h3>
+    <p>{{movie.Synopsis | ellipsis: 3}}</p>
+    <p>In Theaters: {{movie.ShowingDate | date:'MMMM dd, yyyy'}}</p>
+    <p>Revenue: {{movie.Revenue | currency: 'USD': true}}</p>
+
+    <div *ngIf="movie.Rating >= 6; else bad_rating_content">
+      <p class="good">Rating: Good</p>
+    </div>
+
+    <ng-template #bad_rating_content>
+      <p class="bad">Rating: Bad</p>
+    </ng-template>
+
+    <ul [ngSwitch]="movie.Genre">
+      <li *ngSwitchCase="'Animation'">
+        <img src="../assets/images/movie-genres/animation.PNG" [alt]="movie.Title" />
+      </li>
+      <li *ngSwitchCase="'Horror'">
+        <img src="../assets/images/movie-genres/horror.PNG" [alt]="movie.Title" />
+      </li>
+      <li *ngSwitchCase="'Action Adventure'">
+        <img src="../assets/images/movie-genres/action.PNG" [alt]="movie.Title" />
+      </li>
+      <li *ngSwitchCase="'Drama'">
+        <img src="../assets/images/movie-genres/drama.PNG" [alt]="movie.Title" />
+      </li>
+      <li *ngSwitchCase="'Romantic Comedy'">
+        <img src="../assets/images/movie-genres/romantic.PNG" [alt]="movie.Title" />
+      </li>
+      <li *ngSwitchDefault>
+        <img src="../assets/images/movie-genres/others.PNG" [alt]="movie.Title" />
+      </li>
+    </ul>
+  </li>
+</ul>
