@@ -1,10 +1,37 @@
-<ul>
-  <li routerLinkActive="active"><a routerLink="/">Home </a></li>
-  <li routerLinkActive="active"><a routerLink="/about-us">About Us</a></li>
-  <li routerLinkActive="active"><a routerLink="/movies">Movies</a>
-      <ul>
-        <li routerLinkActive="active"><a routerLink="/movies/movie-list">Movie List</a></li>
+<!-- Navigation -->
+<header class="mdl-layout__header">
+  <div class="mdl-layout__header-row">
+    <!-- Title -->
+    <span class="mdl-layout-title">Movies Database</span>
+    <!-- Add spacer, to align navigation to the right -->
+    <div class="mdl-layout-spacer"></div>
+    <!-- Navigation. We hide it in small screens. -->
+    <nav class="mdl-navigation mdl-layout--large-screen-only">
+      <a class="mdl-navigation__link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
+      <a id="about-nav" class="mdl-navigation__link" routerLink="about-us" routerLinkActive="active">About Us</a>
+      <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="about-nav">
+        <li class="mdl-menu__item" routerLink="about-us/demo1">Demo Page 1</li>
+        <li class="mdl-menu__item" routerLink="about-us/demo2">Demo Page 2</li>
       </ul>
-  </li>
-  <li routerLinkActive="active"><a routerLink="/contact-us">Contact Us</a></li>
-</ul>
+      <a id="movies-nav" class="mdl-navigation__link"  routerLink="/movies" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Movies</a>
+      <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="movies-nav">
+        <li class="mdl-menu__item">Top Movies</li>
+        <li class="mdl-menu__item" routerLink="movies/movie-list">All Movies</li>
+      </ul>
+      <a class="mdl-navigation__link" routerLink="user">Contact Us</a>
+    </nav>
+  </div>
+</header>
+<div class="mdl-layout__drawer">
+  <span class="mdl-layout-title">Movies Database</span>
+  <nav class="mdl-navigation">
+    <a class="mdl-navigation__link active" href="#">Home</a>
+    <a class="mdl-navigation__link" href="">About Us</a>
+    <a id="mobile-movies-nav" class="mdl-navigation__link" href="#">Movies</a>
+    <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="mobile-movies-nav">
+      <li class="mdl-menu__item">Top Movies</li>
+      <li class="mdl-menu__item">All Movies</li>
+    </ul>
+    <a class="mdl-navigation__link" href="">Contact Us</a>
+  </nav>
+</div>

@@ -21,6 +21,4 @@ export class LoaderComponent implements OnInit {
         }, this.time);
 
     }
-
-
 }
